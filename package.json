@@ -1,13 +1,16 @@
 {
   "name": "test-redux-store",
-  "version": "0.1.0",
-  "url": "https://github.com/rtragle/test-redux-store",
+  "version": "0.1.1",
   "description": "",
   "main": "lib/index.js",
   "scripts": {
     "compile": "rimraf lib && babel src -d lib",
     "test": "react-scripts test",
     "prepublish": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtragle/test-redux-store.git"
   },
   "author": "Ryan Ragle <rtragle@gmail.com>",
   "license": "MIT",
