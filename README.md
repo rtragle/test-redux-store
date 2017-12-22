@@ -4,17 +4,17 @@ Use the full power of redux for testing!
 This library is made to take up where redux-mock-store left off. You can execute actions that run reducers and see the raw action objects as well as the result state. It works nice with middleware like redux-thunk as well. Unlike redux-mock-store, you can incorporate reducers as well.
 
 ## Getting Started
-TestStore:
 ```
-const testStore = TestStore(<reducer>, <enhancer>);
+const testStore = TestStore(<reducer>, <enhancer>); // both optional
 testStore.getActions(); // returns raw actions against the store
 testStore.clearActions(); // clears action list
+const store = testStore.initializeStore(<initialState>); // optional
 ```
 
 ## How to use
 ```
-const testStore = TestStore(reducer);
-const store = testStore.initializeStore(initialState);
+const testStore = TestStore(<reducer>, <enhancer>); // both optional
+const store = testStore.initializeStore(<initialState>); // optional
 store.dispatch(action1);
 store.dispatch(action2);
 store.dispatch(action3);
