@@ -150,3 +150,6 @@ describe('Test Documentation', () => {
   });
 });
 ```
+
+## Authors
+* **Ryan Ragle** - *Initial work* - (https://github.com/rragle)
