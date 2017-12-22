@@ -1,7 +1,29 @@
+# test-redux-store
 Use the full power of redux for testing!
 
 This library is made to take up where redux-mock-store left off. You can execute actions that run reducers and see the raw action objects as well as the result state. It works nice with middleware like redux-thunk as well. Unlike redux-mock-store, you can incorporate reducers as well.
 
+## Getting Started
+TestStore:
+```
+const testStore = TestStore(<reducer>, <enhancer>);
+testStore.getActions(); // returns raw actions against the store
+testStore.clearActions(); // clears action list
+```
+
+## How to use
+```
+const testStore = TestStore(reducer);
+const store = testStore.initializeStore(initialState);
+store.dispatch(action1);
+store.dispatch(action2);
+store.dispatch(action3);
+
+testStore.getActions(); // will return [action1, action2, action3]
+store.getState(); // will return result state
+```
+
+## Examples
 ```
 import { applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -31,6 +53,8 @@ describe('Test Documentation', () => {
       }
     }
   };
+
+  // the setup, TestStore(reducer, enhancer). Here I'm using redux-thunk
   const testStore = TestStore(reducer, applyMiddleware(thunk));
 
   // util function
@@ -51,6 +75,8 @@ describe('Test Documentation', () => {
       removeTodoRaw('ho'),
     ];
     const expectedActions = actions;
+
+    // initialize store with empty state
     const store = testStore.initializeStore();
 
     actions.forEach(action => store.dispatch(action));
@@ -73,6 +99,8 @@ describe('Test Documentation', () => {
       addTodo('let\'s go'),
     ];
     const expectedActions = actions;
+
+    // initialize store with empty state
     const store = testStore.initializeStore();
 
     actions.forEach(action => store.dispatch(action));
